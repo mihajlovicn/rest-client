@@ -13,4 +13,16 @@
         <relativePath>../rest-client-parent/pom.xml</relativePath>
     </parent>
 
+    <dependencies>
+
+        <!-- INTERNAL -->
+        <!-- ============================================== -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rest-client-api</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>
