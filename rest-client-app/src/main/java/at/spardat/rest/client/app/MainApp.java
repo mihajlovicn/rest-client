@@ -4,7 +4,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import at.spardat.rest.client.demo.DemoApp;
-import at.spardat.rest.client.impl.fluent.ServiceRestClientConfiguration;
+import at.spardat.rest.client.impl.fluent.ServiceRestTemplateClientConfiguration;
 
 /**
  * @since 28.10.2016
@@ -12,7 +12,7 @@ import at.spardat.rest.client.impl.fluent.ServiceRestClientConfiguration;
 public class MainApp {
 
     public static void main(String[] args) {
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(ServiceRestClientConfiguration.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(ServiceRestTemplateClientConfiguration.class);
         DemoApp demoApp = new DemoApp(ctx);
         demoApp.execute();
     }

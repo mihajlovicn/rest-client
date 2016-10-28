@@ -16,11 +16,11 @@ import at.spardat.rest.client.api.fluent.ServiceRestClient;
  * @since 28.10.2016
  */
 @Configuration
-public class ServiceRestClientConfiguration {
+public class ServiceRestTemplateClientConfiguration {
 
     @Bean
     ServiceRestClient serviceRestClient() {
-        return new RestTemplateServiceRestClient(springRestTemplate());
+        return new ServiceRestTemplateClient(springRestTemplate());
     }
 
     @Bean

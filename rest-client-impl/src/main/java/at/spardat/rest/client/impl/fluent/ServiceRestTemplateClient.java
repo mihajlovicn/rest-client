@@ -15,11 +15,11 @@ import at.spardat.rest.client.api.fluent.ServiceRestClient;
 /**
  * @since 28.10.2016
  */
-public class RestTemplateServiceRestClient implements ServiceRestClient {
+public class ServiceRestTemplateClient implements ServiceRestClient {
 
     private final RestOperations restOperations;
 
-    public RestTemplateServiceRestClient(RestOperations restOperations) {
+    public ServiceRestTemplateClient(RestOperations restOperations) {
         this.restOperations = restOperations;
     }
 
