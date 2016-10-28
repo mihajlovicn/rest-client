@@ -23,6 +23,14 @@
             <artifactId>rest-client-api</artifactId>
         </dependency>
 
+        <!-- SPRING -->
+        <!-- ============================================== -->
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

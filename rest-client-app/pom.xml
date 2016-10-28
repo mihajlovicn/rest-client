@@ -15,6 +15,19 @@
 
     <dependencies>
 
+        <!-- INTERNAL -->
+        <!-- ============================================== -->
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rest-client-impl</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>rest-client-demo</artifactId>
+        </dependency>
+
         <!-- SPRING -->
         <!-- ============================================== -->
 

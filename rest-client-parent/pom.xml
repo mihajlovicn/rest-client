@@ -32,6 +32,18 @@
                 <version>${project.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>rest-client-impl</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>rest-client-demo</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+
             <!-- MISC -->
             <!-- ============================================== -->
 
