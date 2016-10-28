@@ -21,6 +21,7 @@
         <module>rest-client-api</module>
         <module>rest-client-impl</module>
         <module>rest-client-app</module>
+        <module>rest-client-demo</module>
     </modules>
 
 </project>
