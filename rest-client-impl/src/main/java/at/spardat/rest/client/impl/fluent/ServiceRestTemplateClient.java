@@ -1,7 +1,6 @@
 package at.spardat.rest.client.impl.fluent;
 
-import java.net.URI;
-
+import at.spardat.rest.client.api.fluent.ServiceRestClient;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -10,7 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestOperations;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import at.spardat.rest.client.api.fluent.ServiceRestClient;
+import java.net.URI;
 
 /**
  * @since 28.10.2016
@@ -39,7 +38,9 @@ public class ServiceRestTemplateClient implements ServiceRestClient {
 
     private static URI dummyRestUri() {
         // http://appplust98.imc.lan.at:25351/rest-web/api/info/version
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString("http://appplust98.imc.lan.at:25351/rest-web/api/info/version");
+        // String url = "http://appplust98.imc.lan.at:25351/rest-web/api/info/version";
+        String url = "http://localhost:8981/json/version.json";
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(url);
         return uriBuilder.build().toUri();
     }
 
