@@ -20,6 +20,7 @@
             <artifactId>jetty-all</artifactId>
             <version>9.2.6.v20141205</version>
         </dependency>
+
     </dependencies>
 
 </project>

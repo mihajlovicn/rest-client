@@ -20,8 +20,8 @@ public class JettyServerApp {
 
     public static void main(String[] args) throws Exception {
         System.out.println("Current working directory: " + new File("").getAbsolutePath());
-        validatePortNotInUse();
-        Server server = prepareServer();
+        validatePortNotInUse(PORT);
+        Server server = prepareServer(PORT);
         run(server);
     }
 
@@ -37,12 +37,12 @@ public class JettyServerApp {
         }
     }
 
-    private static Server prepareServer() throws IOException {
+    private static Server prepareServer(int port) throws IOException {
         Server server = new Server();
         ServerConnector connector = new ServerConnector(server);
         connector.setIdleTimeout((int) TimeUnit.HOURS.toMillis(1));
         connector.setSoLingerTime(-1);
-        connector.setPort(PORT);
+        connector.setPort(port);
         server.addConnector(connector);
 
         HashSessionManager sessionManager = new HashSessionManager();
@@ -59,11 +59,11 @@ public class JettyServerApp {
         return server;
     }
 
-    private static void validatePortNotInUse() {
+    private static void validatePortNotInUse(int port) {
         try {
-            new ServerSocket(PORT, 50, InetAddress.getByName("localhost")).close();
+            new ServerSocket(port, 50, InetAddress.getByName("localhost")).close();
         } catch (Exception e) {
-            System.out.println(String.format("Could not open port %d, already in use?", PORT));
+            System.out.println(String.format("Could not open port %d, already in use?", port));
             System.exit(1);
         }
     }
