@@ -10,11 +10,11 @@
 
     <artifactId>rest-client-root</artifactId>
     <parent>
-        <groupId>at.spardat.rest.client</groupId>
-        <artifactId>rest-client-parent</artifactId>
-        <version>1.0-SNAPSHOT</version>
-        <relativePath>rest-client-parent/pom.xml</relativePath>
-    </parent>
+		<groupId>at.spardat.rest.client</groupId>
+		<artifactId>rest-client-parent</artifactId>
+		<version>1.0-SNAPSHOT</version>
+		<relativePath>rest-client-parent/pom.xml</relativePath>
+	</parent>
 
     <modules>
         <module>rest-client-parent</module>
@@ -22,7 +22,6 @@
         <module>rest-client-impl</module>
         <module>rest-client-app</module>
         <module>rest-client-demo</module>
-        <module>rest-client-server</module>
     </modules>
 
 </project>
