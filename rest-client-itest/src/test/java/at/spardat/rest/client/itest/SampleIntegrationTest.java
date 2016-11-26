@@ -13,16 +13,20 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.aResponse;
+import static com.github.tomakehurst.wiremock.client.WireMock.equalTo;
 import static com.github.tomakehurst.wiremock.client.WireMock.get;
+import static com.github.tomakehurst.wiremock.client.WireMock.getRequestedFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.stubFor;
 import static com.github.tomakehurst.wiremock.client.WireMock.urlEqualTo;
+import static com.github.tomakehurst.wiremock.client.WireMock.verify;
 import static com.github.tomakehurst.wiremock.core.WireMockConfiguration.wireMockConfig;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Test
 public class SampleIntegrationTest {
 
-    private static final int PORT = 8089;
+    private static final int PORT = 8089; // could use wiremock's dynamic port; need to pass it to rest-client though
+    private static final String JSON = MimeType.JSON.toString();
 
     private WireMockServer wireMockServer;
 
@@ -31,7 +35,6 @@ public class SampleIntegrationTest {
         wireMockServer = new WireMockServer(wireMockConfig().port(PORT));
         wireMockServer.start();
         WireMock.configureFor("localhost", PORT);
-//        wireMock = new WireMock("localhost", PORT);
     }
 
     @AfterMethod
@@ -47,9 +50,10 @@ public class SampleIntegrationTest {
     public void requestDummyEndpoint() {
         String url = "/dummy";
         String mockedResponseBody = "Hello world!";
+
         stubFor(get(urlEqualTo(url))
             .willReturn(aResponse()
-                .withHeader("Content-Type", MimeType.PLAIN.toString())
+                .withHeader("Content-Type", JSON)
                 .withBody(mockedResponseBody)));
 
         ApplicationContext ctx = new AnnotationConfigApplicationContext(ServiceRestTemplateClientConfiguration.class);
@@ -57,6 +61,9 @@ public class SampleIntegrationTest {
         final String result = restClient.forService("ignoredByImplementation");
 
         assertThat(result).isEqualTo(mockedResponseBody);
+        verify(getRequestedFor(urlEqualTo(url))
+            .withHeader("Content-Type", equalTo(JSON)));
+
     }
 
 }
