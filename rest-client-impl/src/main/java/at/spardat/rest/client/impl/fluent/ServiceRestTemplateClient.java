@@ -24,11 +24,12 @@ public class ServiceRestTemplateClient implements ServiceRestClient {
     }
 
     @Override
-    public String forService(String serviceName) {
+    public String forService(String serviceName) { // FIXME serviceName unused
         HttpHeaders headers = createHeaders();
         HttpEntity<String> parameters = new HttpEntity<>(headers);
-        final ResponseEntity<String> forEntity = restOperations.exchange(dummyRestUri(), HttpMethod.GET, parameters, String.class);
-        return forEntity.toString();
+        final ResponseEntity<String> entity = restOperations.exchange(dummyRestUri(), HttpMethod.GET, parameters, String.class);
+        // TODO log response entity (add logging framework first)
+        return entity.getBody();
     }
 
     private static HttpHeaders createHeaders() {
@@ -39,7 +40,9 @@ public class ServiceRestTemplateClient implements ServiceRestClient {
 
     private static URI dummyRestUri() {
         // http://appplust98.imc.lan.at:25351/rest-web/api/info/version
-        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString("http://appplust98.imc.lan.at:25351/rest-web/api/info/version");
+        // "http://appplust98.imc.lan.at:25351/rest-web/api/info/version"
+        String url = "http://localhost:8089/dummy";
+        UriComponentsBuilder uriBuilder = UriComponentsBuilder.fromUriString(url);
         return uriBuilder.build().toUri();
     }
 
